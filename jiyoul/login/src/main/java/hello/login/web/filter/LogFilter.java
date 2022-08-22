@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 @Slf4j
-public class LoginFilter implements Filter {
+public class LogFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -21,17 +21,18 @@ public class LoginFilter implements Filter {
         log.info("doFilter");
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
-        httpRequest.getRequestURI();
+        String requestURI = httpRequest.getRequestURI();
 
         String uuid = UUID.randomUUID().toString();
 
 
         try {
-
+            log.info("REQUEST [{}][{}]", uuid, requestURI);
+            chain.doFilter(request, response);
         } catch (Exception e) {
-
+            throw e;
         } finally {
-
+            log.info("RESPONSE [{}][{}]", uuid, requestURI);
         }
 
 

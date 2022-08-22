@@ -32,7 +32,7 @@ public class LoginCheckFilter implements Filter {
                 if (session == null || session.getAttribute(SessionConst.LOGIN_MEMBER) == null) {
 
                     log.info("미인증 사용자 요청 {}", requestURI);
-                    //로그인으로 redirect
+                    //로그인으로 redirect (.sendRedirect("/login") 만 해도 되지만 로그인시 전 화면으로 돌려보기내 위해서 아래와 같이 코딩.
                     httpResponse.sendRedirect("/login?redirectURL=" + requestURI);
                     return;
                 }
