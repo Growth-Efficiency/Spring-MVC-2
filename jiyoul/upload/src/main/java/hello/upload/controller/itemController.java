@@ -67,7 +67,7 @@ public class itemController {
 
     //서버 PC 폴더 경로에 있는 이미지나 파일들을 다운로드 하기.
     @GetMapping("/attach/{itemId}")
-    public ResponseEntity<Resource> downloadattach(@PathVariable Long itemId) throws MalformedURLException {
+    public ResponseEntity<Resource> downloadAttach(@PathVariable Long itemId) throws MalformedURLException {
         Item item = itemRepository.findById(itemId);
         String storeFileName = item.getAttachFile().getStoreFileName();
         String uploadFileName = item.getAttachFile().getUploadFileName();
